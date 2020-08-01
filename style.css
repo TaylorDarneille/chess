@@ -1,0 +1,16 @@
+#gameboard {
+    height: 60vw;
+    width: 60vw;
+    display: grid;
+    /* I feel like there should be a better way to do the following  */
+    grid-template-rows: 8fr 8fr 8fr 8fr 8fr 8fr 8fr 8fr; 
+    grid-template-columns: 8fr 8fr 8fr 8fr 8fr 8fr 8fr 8fr; 
+}
+
+.black {
+    background-color: black;
+}
+
+.white {
+    background-color: white;
+}
