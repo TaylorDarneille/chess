@@ -1,3 +1,4 @@
+let playerUp = "black";
 let currentPiece;
 
 createBoard=()=>{
@@ -34,17 +35,25 @@ allowDrop=(e)=>{
 
 drop=(e)=>{
     e.preventDefault();
-    e.target.appendChild(currentPiece)
+    if(currentPiece){
+        e.target.appendChild(currentPiece)
+        currentPiece = null
+    }
 }
 
 drag=(e)=>{
-    console.log("dragging", e.target)
-    currentPiece = e.target
+    // check to see if this piece is on playerUp's team
+    if(e.target.classList.contains(`${playerUp}`)){
+        currentPiece = e.target
+        console.log("dragging", e.target)
+    } else {
+        console.log("it's not your turn!")
+    }
 }
 
 createPiece=()=>{
     let chessPiece = document.createElement("div")
-    chessPiece.classList.add("piece")
+    chessPiece.classList.add("piece", "black")
     chessPiece.setAttribute("draggable", true)
     chessPiece.setAttribute("ondragstart", "drag(event)")
     let firstSquare = document.querySelector(".r1, .c1")
